@@ -14,7 +14,7 @@ module.exports = {
             .setAuthor({ name: 'h bot', iconURL: 'attachment://pfp.png'})
             .setThumbnail('attachment://pfp.png')
             .addFields(
-                { name: 'funnys', value: '/dancingh - shows you a dancing h gif\n/ping - pong!' },
+                { name: 'funnys', value: '/dancingh - shows you a dancing h gif\n/dancingletters <letter> - show a letter of your choice\n/ping - pong!' },
                 { name: 'useful', value: '/help - shows you this help page' },
             )
 		await interaction.reply({ embeds: [exampleEmbed], files: [file] });
