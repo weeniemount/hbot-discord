@@ -11,5 +11,5 @@ make a config.json file like this
   "guildId": "guildidgoeshere"
 }
 ```
-guildId is the id of your bot's testing server
+guildId is the id of your bot's testing server.
 clientId is the application id of your bot
