@@ -3,6 +3,7 @@ const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 
 module.exports = {
+	cooldown: 5,
 	data: new SlashCommandBuilder()
 	.setName('dancing')
 	.setDescription('send a dancing letter, number or symbol of your choice in chat')
