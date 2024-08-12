@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const file = new AttachmentBuilder('images/pfp.png');
 module.exports = {
+    cooldown: 5,
 	data: new SlashCommandBuilder({ integration_types: [0,1] })
 		.setName('dancingwords')
 		.setDescription('make your words out of dancing letters!')
