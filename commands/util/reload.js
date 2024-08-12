@@ -4,7 +4,7 @@ module.exports = {
 	category: 'utility',
 	data: new SlashCommandBuilder()
 		.setName('reload')
-		.setDescription('Reloads a command.')
+		.setDescription('Reloads a command. (GUILD SPECIFIC)')
 		.addStringOption(option =>
 			option.setName('command')
 				.setDescription('The command to reload.')
