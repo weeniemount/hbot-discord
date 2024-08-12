@@ -1,6 +1,6 @@
 # hbot-discord
 h
-
+https://discord.gg/bNeQwCBb
 install nodejs, clone the repo and run ```npm install discord.js```
 
 edit the configEXAMPLE.json file.
