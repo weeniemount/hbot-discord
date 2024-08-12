@@ -26,7 +26,7 @@ module.exports = {
             //.setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
             //.setThumbnail('attachment://pfp.png')
             .addFields(
-                { name: `you got ${randomhoints} hoint!`, value: `your current amount of hoints: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints}` },
+                { name: `you got ${randomhoints} hoints!`, value: `your current amount of hoints: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints}` },
             )
 		await interaction.reply({ embeds: [exampleEmbed], ephemeral: true});
 	},
