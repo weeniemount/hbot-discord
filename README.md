@@ -3,7 +3,7 @@ https://discord.gg/bNeQwCBb
 
 h
 
-install nodejs, clone the repo and run ```npm install discord.js```
+install nodejs, clone the repo and run ```npm install discord.js better-sqlite3``` 
 
 edit the configEXAMPLE.json file.
 token is your bot's token.
