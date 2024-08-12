@@ -3,8 +3,9 @@ const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 
 const file = new AttachmentBuilder('images/pfp.png');
+
 module.exports = {
-	data: new SlashCommandBuilder()
+	data: new SlashCommandBuilder({ integration_types: [0,1] })
 		.setName('help')
 		.setDescription('h bot commands!'),
 	async execute(interaction) {

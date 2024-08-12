@@ -5,7 +5,7 @@ const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const file = new AttachmentBuilder('images/dancingletters/h.gif');
 module.exports = {
 	cooldown: 5,
-	data: new SlashCommandBuilder()
+	data: new SlashCommandBuilder({ integration_types: [0,1] })
 		.setName('dancingh')
 		.setDescription('send a dancing h in chat'),
 	async execute(interaction) {

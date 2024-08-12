@@ -4,7 +4,7 @@ const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 
 module.exports = {
 	cooldown: 5,
-	data: new SlashCommandBuilder()
+	data: new SlashCommandBuilder({ integration_types: [0,1] })
 	.setName('dancing')
 	.setDescription('send a dancing letter, number or symbol of your choice in chat')
 	.addStringOption(option =>
