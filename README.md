@@ -5,13 +5,19 @@ h
 
 ![dancing h](images/dancingletters/h.gif)
 
-install nodejs, clone the repo and run ```npm install discord.js better-sqlite3``` 
+<!-- install nodejs, clone the repo and run ```npm install discord.js better-sqlite3 lyntr.js``` -->
+install nodejs, clone the repo and run ```npm install discord.js better-sqlite3```
 
 edit the configEXAMPLE.json file.
 token is your bot's token.
 guildId is the id of your bot's testing server.
 clientId is the application id of your bot.
 once you are done with editing the file, rename it to config.json
+<!-- shelved feature for now. will come back soon
+# lyntr.js functionallity
+
+if you want to use lyntr.js with your server, here's what to do
+-->
 
 # /dancingletters command
 if you want the dancingletters command to work, follow my steps
