@@ -4,10 +4,10 @@ module.exports = {
 	category: 'utility',
 	data: new SlashCommandBuilder()
 		.setName('reload')
-		.setDescription('Reloads a command. (GUILD SPECIFIC)')
+		.setDescription('reloads a command (GUILD SPECIFIC)')
 		.addStringOption(option =>
 			option.setName('command')
-				.setDescription('The command to reload.')
+				.setDescription('the command to reload')
 				.setRequired(true)),
 	async execute(interaction) {
 		const commandName = interaction.options.getString('command', true).toLowerCase();
