@@ -12,11 +12,10 @@ module.exports = {
         const user = database.prepare('SELECT * FROM users WHERE id = ?').get(userId);
 
         if (user) {
-            // Update existing user points
-            database.prepare('UPDATE users SET points = points + ? WHERE id = ?').run(pointsToAdd, userId);
+            console.log(`user ${interaction.user.tag} already exists in the database!`)
         } else {
-            // Insert new user with points
-            database.prepare('INSERT INTO users (id, points) VALUES (?, ?)').run(userId, 0);
+            console.log(`user ${interaction.user.tag} doesnt exist in the database! creating database entry for user...`)
+            database.prepare('INSERT INTO users (id, hoints) VALUES (?, ?)').run(userId, 0);
         }
         const exampleEmbed = new EmbedBuilder()
             .setColor(0xef2213)
@@ -24,7 +23,7 @@ module.exports = {
             .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
             .setThumbnail('attachment://pfp.png')
             .addFields(
-                { name: 'hoints:', value: 'idk???? why are you asking me' },
+                { name: 'hoints:', value: `${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints}` },
             )
 		await interaction.reply({ embeds: [exampleEmbed]});
 	},
