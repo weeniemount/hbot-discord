@@ -30,7 +30,7 @@ if you want the dancingletters command to work, follow my steps
 ![emoji page](images/github/emojipage.png)
 
 4. you want to upload all the images from the "images/dancingletters" folder into this page. do NOT rename the emojis!
-5. go to the commands/fun/dancingwords.js file and find the dancingwordsids table. replace every id from the table with the id from the emoji tab. so, for example you wanted to replace the letter h's emoji id. you would go into the emoji tab, find the letter h emoji and then copy the emoji id. then in the table, find the letter h and replace the id with the id from your application's emoji tab.
+5. go to the modules/emojiids.js file and find the emojiids table. replace every id from the table with the id from the emoji tab. so, for example you wanted to replace the letter h's emoji id. you would go into the emoji tab, find the letter h emoji and then copy the emoji id. then in the table, find the letter h and replace the id with the id from your application's emoji tab.
 6. once you did all of that, once you try the dancingwords command, it should work!
 
 i know this is tedious, but im not the best coder in the world. sorry :/
