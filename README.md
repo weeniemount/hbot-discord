@@ -3,13 +3,8 @@ h
 
 install nodejs, clone the repo and run ```npm install discord.js```
 
-make a config.json file like this
-```json
-{
-  "token": "yourtokengoeshere",
-  "clientId": "clientidgoeshere"
-  "guildId": "guildidgoeshere"
-}
-```
+edit the configEXAMPLE.json file.
+token is your bot's token.
 guildId is the id of your bot's testing server.
-clientId is the application id of your bot
+clientId is the application id of your bot.
+once you are done with editing the file, rename it to config.json
