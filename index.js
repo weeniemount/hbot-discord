@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -54,7 +54,11 @@ client.on(Events.InteractionCreate, async interaction => {
 
 		if (now < expirationTime) {
 			const expiredTimestamp = Math.round(expirationTime / 1000);
-			return interaction.reply({ content: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
+			const errorembed = new EmbedBuilder()
+					.setColor(0xef2213)
+					.setTitle(`the command \`${command.data.name}\` is on a cooldown for you! you can use it again <t:${expiredTimestamp}:R>`)
+			return interaction.reply({ embeds: [errorembed], ephemeral: true });
+			//return interaction.reply({ content: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
 		}
 	}
 
