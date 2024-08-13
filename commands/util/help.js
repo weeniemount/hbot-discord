@@ -20,6 +20,7 @@ module.exports = {
                 { name: 'funnys', value: '/dancingh - shows you a dancing h gif\n/dancing <letter/number/symbol> - show a dancing letter, number or smybol of your choice\n/dancingwords <words> - make your words out of dancing letters!\n/ping - pong!' },
                 { name: 'useful', value: '/help - shows you this help page' },
                 { name: `currency`, value: '/hointsbalance - shows you your hoints balance\n/hointgiver - gives you one single hoint\n/hointsgamble - get 1 - 50 hoints\n/hointleaderboard - top 10 people with the most hoints' },
+                { name: 'h facts', value: '/hacts <OPTIONAL:userfacts> - shows you a random fact! userfacts turns on user submitted facts\n/submithfact - submit an h fact for review!' },
             )
             .setFooter({ text: `made with love and h by @weeniemount`, iconURL: 'attachment://weeniemount.png' });
 		await interaction.reply({ embeds: [exampleEmbed], files: [file,weeniemount], ephemeral: true });
