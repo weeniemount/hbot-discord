@@ -6,7 +6,7 @@ h
 ![dancing h](images/dancingletters/h.gif)
 
 <!-- install nodejs, clone the repo and run ```npm install discord.js better-sqlite3 lyntr.js``` -->
-install nodejs, clone the repo and run ```npm install discord.js better-sqlite3```
+install nodejs, clone the repo and run ```npm install discord.js better-sqlite3 pm2```
 
 edit the configEXAMPLE.json file.
 token is your bot's token.
@@ -18,6 +18,24 @@ once you are done with editing the file, rename it to config.json
 
 if you want to use lyntr.js with your server, here's what to do
 -->
+
+run the bot either with run.bat, or with either pm2 or nodejs
+
+nodejs:
+
+```
+node deploy-commands.js
+node index.js
+```
+
+pm2:
+
+```
+node deploy-commands.js
+pm2 start index.js
+```
+
+if you want to kill the bot in pm2 just run ``` pm2 kill ```
 
 # emojis
 if you want the emojis of the bot to work, follow my steps

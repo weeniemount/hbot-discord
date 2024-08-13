@@ -2,6 +2,7 @@
   "dependencies": {
     "better-sqlite3": "^11.1.2",
     "discord.js": "^14.15.3",
-    "lyntr.js": "^1.1.2"
+    "lyntr.js": "^1.1.2",
+    "pm2": "^5.4.2"
   }
 }

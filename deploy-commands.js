@@ -18,7 +18,7 @@ for (const folder of commandFolders) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
 		if ('data' in command && 'execute' in command) {
-			if (command.data.name == "reload") {
+			if (command.data.name == "reload" || command.data.name == "restartbot") {
 				guildcommands.push(command.data.toJSON());
 			} else {
 				commands.push(command.data.toJSON());
