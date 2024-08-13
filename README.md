@@ -8,10 +8,22 @@ h
 <!-- install nodejs, clone the repo and run ```npm install discord.js better-sqlite3 lyntr.js``` -->
 install nodejs, clone the repo and run ```npm install discord.js better-sqlite3 pm2```
 
+create a discord application on discord.com/developers
+
+make sure the bot has the
+1. send messages
+2. send messages in threads
+3. view channels
+permissions, and also give the bot command permissions
+
+make yourself (or use a different testing server owned by you) a testing server and invite you and the h bot bot into the server
+
 edit the configEXAMPLE.json file.
 token is your bot's token.
 guildId is the id of your bot's testing server.
 clientId is the application id of your bot.
+hfactsChannelID is the id of the channel in your testing server where the bot will send user submissions for h facts. anyone can accept or decline the facts, so be sure to limit the channel to specific people!
+
 once you are done with editing the file, rename it to config.json
 <!-- shelved feature for now. will come back soon
 # lyntr.js functionallity
@@ -36,6 +48,9 @@ pm2 start index.js
 ```
 
 if you want to kill the bot in pm2 just run ``` pm2 kill ```
+
+# submitting h facts
+
 
 # emojis
 if you want the emojis of the bot to work, follow my steps

@@ -1,5 +1,6 @@
 {
 	"token": "yourtokengoeshere",
 	"clientId": "clientidgoeshere",
-	"guildId": "guildidgoeshere"
+	"guildId": "guildidgoeshere",
+	"hfactsChannelID": "channelidgoeshere"
   }

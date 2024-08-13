@@ -3,6 +3,7 @@ const hfactstable = require('../../modules/hfactstable.js')
 const { token } = require('../../config.json');
 const client = require('../../modules/client.js')
 const database = require('../../modules/database.js')
+const { hfactsChannelID } = require('../../config.json');
 
 var userid
 var username
@@ -42,7 +43,7 @@ module.exports = {
         const row = new ActionRowBuilder()
 			.addComponents(accept, decline);
 
-        var channel = await client.channels.fetch("1272883149944389672")
+        var channel = await client.channels.fetch(hfactsChannelID)
         if (channel && channel.isTextBased()) {    
             const embed = new EmbedBuilder()
                 .setColor(0xef2213)
