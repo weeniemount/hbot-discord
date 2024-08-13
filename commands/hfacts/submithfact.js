@@ -54,9 +54,9 @@ module.exports = {
                 .setFooter({text: `h fact submmited by @${username}`, iconURL: userpfp})
             const response = await channel.send({ embeds: [embed], components: [row], });
             //const collectorFilter = 635875339804868638;
+            const confirmation = await response.awaitMessageComponent({ time: 86400000 });
 
             try {
-                const confirmation = await response.awaitMessageComponent({ time: 28800 });
                 if (confirmation.customId === 'accept') {
                     const embedaccept = new EmbedBuilder()
                         .setColor(0xef2213)
@@ -79,7 +79,7 @@ module.exports = {
                 }
             } catch (e) {
                 console.log(`h fact '${hfact}' has been declined because no one accepted/declined it. sad....`)
-                //await interaction.editReply({ content: 'Confirmation not received within 1 minute, cancelling', components: [] });
+                await interaction.editReply({ content: 'Confirmation not received within 1 minute, cancelling', components: [] });
             }
         } else {
             console.error("Channel not found or is not a text-based channel.");

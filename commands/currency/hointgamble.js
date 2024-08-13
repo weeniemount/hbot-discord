@@ -8,12 +8,15 @@ module.exports = {
     cooldown: 60,
 	data: new SlashCommandBuilder({ integration_types: [0,1] })
 		.setName('hointsgamble')
-		.setDescription('get 1-50 hoints'),
+		.setDescription('get -50-50 hoints'),
 	async execute(interaction) {
         const userId = interaction.user.id
         const username = interaction.user.tag
         const user = database.prepare('SELECT * FROM users WHERE id = ?').get(userId);
-        const randomhoints = Math.floor(Math.random() * 51);
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        const randomhoints = getRandomNumber(-50, 50)
 
         if (user) {
             console.log(`user ${interaction.user.tag} already exists in the database!`)
