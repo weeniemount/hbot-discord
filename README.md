@@ -1,6 +1,8 @@
 # hbot-discord
 https://discord.gg/bNeQwCBb
 
+https://discord.com/oauth2/authorize?client_id=1272230120521732107
+
 h
 
 ![dancing h](images/dancingletters/h.gif)
