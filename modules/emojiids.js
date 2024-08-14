@@ -43,6 +43,7 @@ var emojiids = {
     "hoint": "1272857094495797329",
     "steamhappy": "1273358968546263122",
     "nerd": "1273360573504946236",
+    "helpful": "1273361942983213247",
 }
 
 module.exports = emojiids;

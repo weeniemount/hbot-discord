@@ -19,6 +19,7 @@ module.exports = {
         const useful = new ButtonBuilder()
             .setCustomId(`useful`)
             .setLabel(`useful`)
+            .setEmoji(emojiids["helpful"])
             .setStyle(ButtonStyle.Primary);
         const currency = new ButtonBuilder()
             .setCustomId(`currency`)
@@ -53,14 +54,14 @@ module.exports = {
                     .setColor(0xef2213)
                     .setTitle('funnys category')
                     .setThumbnail('attachment://pfp.png')
-                    .addFields({ name: `<:hoint:${emojiids["steamhappy"]}> funnys`, value: '/dancingh - shows you a dancing h gif\n/dancing <letter/number/symbol> - show a dancing letter, number or smybol of your choice\n/dancingwords <words> - make your words out of dancing letters!\n/ping - pong!' })
+                    .addFields({ name: `<:steamhappy:${emojiids["steamhappy"]}> funnys`, value: '/dancingh - shows you a dancing h gif\n/dancing <letter/number/symbol> - show a dancing letter, number or smybol of your choice\n/dancingwords <words> - make your words out of dancing letters!\n/ping - pong!' })
                 await confirmation.update({ embeds: [helpinfoembed], components: [] });
             } else if (confirmation.customId === 'useful') {
                 const helpinfoembed = new EmbedBuilder()
                     .setColor(0xef2213)
                     .setTitle('useful category')
                     .setThumbnail('attachment://pfp.png')
-                    .addFields({ name: 'useful', value: '/help - shows you this help page' })
+                    .addFields({ name: `<:useful:${emojiids["useful"]} useful`, value: '/help - shows you this help page' })
                 await confirmation.update({ embeds: [helpinfoembed], components: [] });
             } else if (confirmation.customId === 'currency') {
                 const helpinfoembed = new EmbedBuilder()
@@ -74,7 +75,7 @@ module.exports = {
                     .setColor(0xef2213)
                     .setTitle('h facts category')
                     .setThumbnail('attachment://pfp.png')
-                    .addFields({ name: `<:hoint:${emojiids["nerd"]}> h facts`, value: '/hacts <OPTIONAL:userfacts> - shows you a random fact! userfacts turns on user submitted facts\n/submithfact - submit an h fact for review!' })
+                    .addFields({ name: `<:nerd:${emojiids["nerd"]}> h facts`, value: '/hacts <OPTIONAL:userfacts> - shows you a random fact! userfacts turns on user submitted facts\n/submithfact - submit an h fact for review!' })
                 await confirmation.update({ embeds: [helpinfoembed], components: [] });
             }
         } catch (e) {
