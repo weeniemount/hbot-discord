@@ -72,7 +72,7 @@ module.exports = {
                         .setColor(0xef2213)
                         .setTitle('h fact submission')
                         .addFields(
-                            { name: `h fact ${hfact} has been declined`, value: 'aww...' },
+                            { name: `h fact "${hfact}" has been declined`, value: 'aww...' },
                         )
                         .setFooter({text: `h fact submmited by @${username}`, iconURL: userpfp})
                     await confirmation.update({ embeds: [embeddecline], components: [] });
