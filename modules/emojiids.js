@@ -44,6 +44,7 @@ var emojiids = {
     "steamhappy": "1273358968546263122",
     "nerd": "1273360573504946236",
     "helpful": "1273361942983213247",
+    "devicon": "1273372840808157215",
 }
 
 module.exports = emojiids;

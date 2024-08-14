@@ -2,6 +2,7 @@ const { channel } = require('diagnostics_channel');
 const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder, AttachmentBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
 const emojiids = require('../../modules/emojiids.js')
+const { guildId } = require('../../config.json')
 
 const file = new AttachmentBuilder('images/pfp.png');
 const weeniemount = new AttachmentBuilder(`images/weeniemount.png`);
@@ -11,6 +12,8 @@ module.exports = {
 		.setName('help')
 		.setDescription('h bot commands!'),
 	async execute(interaction) {
+        const currentserverid = interaction.guild.id
+
         const funnys = new ButtonBuilder()
             .setCustomId(`funnys`)
             .setLabel(`funnys`)
@@ -32,6 +35,14 @@ module.exports = {
             .setEmoji(emojiids["nerd"])
             .setStyle(ButtonStyle.Primary);
 
+        const devcommands = new ButtonBuilder()
+            .setCustomId(`devcommands`)
+            .setLabel(`dev commands`)
+            .setEmoji(emojiids["devicon"])
+            .setStyle(ButtonStyle.Primary);
+        
+        const devrow = new ActionRowBuilder()
+            .addComponents(funnys, useful, currency, hfacts, devcommands);
         const row = new ActionRowBuilder()
             .addComponents(funnys, useful, currency, hfacts);
         
@@ -45,7 +56,12 @@ module.exports = {
             )
             .setFooter({ text: `made with love and h by @weeniemount`, iconURL: 'attachment://weeniemount.png' });
         const collectorFilter = i => i.user.id === interaction.user.id;
-        const response = await interaction.reply({ embeds: [helpembed], components: [row], ephemeral: true });
+        var repsonse
+        if (currentserverid == guildId) {
+            response = await interaction.reply({ embeds: [helpembed], components: [devrow], ephemeral: true });
+        } else {
+            response = await interaction.reply({ embeds: [helpembed], components: [row], ephemeral: true });
+        }
         const confirmation = await response.awaitMessageComponent({ filter: collectorFilter });
 
         try {
@@ -61,7 +77,7 @@ module.exports = {
                     .setColor(0xef2213)
                     .setTitle('useful category')
                     .setThumbnail('attachment://pfp.png')
-                    .addFields({ name: `<:useful:${emojiids["useful"]} useful`, value: '/help - shows you this help page' })
+                    .addFields({ name: `<:helpful:${emojiids["helpful"]}> useful`, value: '/help - shows you this help page' })
                 await confirmation.update({ embeds: [helpinfoembed], components: [] });
             } else if (confirmation.customId === 'currency') {
                 const helpinfoembed = new EmbedBuilder()
@@ -76,6 +92,13 @@ module.exports = {
                     .setTitle('h facts category')
                     .setThumbnail('attachment://pfp.png')
                     .addFields({ name: `<:nerd:${emojiids["nerd"]}> h facts`, value: '/hacts <OPTIONAL:userfacts> - shows you a random fact! userfacts turns on user submitted facts\n/submithfact - submit an h fact for review!' })
+                await confirmation.update({ embeds: [helpinfoembed], components: [] });
+            } else if (confirmation.customId === 'devcommands') {
+                const helpinfoembed = new EmbedBuilder()
+                    .setColor(0xef2213)
+                    .setTitle('dev commands category')
+                    .setThumbnail('attachment://pfp.png')
+                    .addFields({ name: `<:devicon:${emojiids["devicon"]}> dev commands`, value: '/reload <command> - reloads a command\n/restartbot - restart the bot (ONLY WORKS IF YOU STARTED BOT WITH PM2)' })
                 await confirmation.update({ embeds: [helpinfoembed], components: [] });
             }
         } catch (e) {
