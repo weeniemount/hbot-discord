@@ -19,7 +19,7 @@ module.exports = {
                 leaderboardata += `${index + 1}. ${user.username}: ${user.hoints} hoints <:hoint:${emojiids["hoint"]}>\n`;
             });
         }
-        const exampleEmbed = new EmbedBuilder()
+        const hointleaderboard = new EmbedBuilder()
             .setColor(0xef2213)
             .setTitle(`hoint leaderboard`)
             .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
@@ -27,6 +27,6 @@ module.exports = {
             .addFields(
                 { name: `leaderboard`, value: leaderboardata },
             )
-		await interaction.reply({ embeds: [exampleEmbed]});
+		await interaction.reply({ embeds: [hointleaderboard]});
 	},
 };

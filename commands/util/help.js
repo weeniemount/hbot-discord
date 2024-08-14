@@ -1,6 +1,4 @@
-const { channel } = require('diagnostics_channel');
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder, AttachmentBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
 const emojiids = require('../../modules/emojiids.js')
 const { guildId } = require('../../config.json')
 

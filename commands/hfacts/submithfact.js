@@ -19,7 +19,6 @@ module.exports = {
             .setDescription('your h fact!')
             .setRequired(true)),
 	async execute(interaction) {
-        const randomFact = Math.floor(Math.random() * hfactstable.length);
         userid = interaction.user.id
         username = interaction.user.tag
         hfact = interaction.options.getString('fact')

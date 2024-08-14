@@ -1,6 +1,4 @@
-const { channel } = require('diagnostics_channel');
-const { SlashCommandBuilder } = require('discord.js');
-const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const database = require('../../modules/database.js');
 const emojiids = require('../../modules/emojiids.js');
 
@@ -19,7 +17,7 @@ module.exports = {
             console.log(`user ${interaction.user.tag} doesnt exist in the database! creating database entry for user...`)
             database.prepare('INSERT INTO users (id, username, hoints) VALUES (?, ?, ?)').run(userId, username, 0);
         }
-        const exampleEmbed = new EmbedBuilder()
+        const hointsbalance = new EmbedBuilder()
             .setColor(0xef2213)
             .setTitle(`${interaction.user.tag}'s hoints balance`)
             .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
@@ -27,6 +25,6 @@ module.exports = {
             .addFields(
                 { name: 'hoints:', value: `${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints} <:hoint:${emojiids["hoint"]}>` },
             )
-		await interaction.reply({ embeds: [exampleEmbed]});
+		await interaction.reply({ embeds: [hointsbalance]});
 	},
 };
