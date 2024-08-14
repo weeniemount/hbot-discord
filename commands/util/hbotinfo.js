@@ -2,6 +2,7 @@ const { EmbedBuilder, AttachmentBuilder, SlashCommandBuilder} = require('discord
 
 const file = new AttachmentBuilder('images/pfp.png');
 const weeniemount = new AttachmentBuilder(`images/weeniemount.png`);
+const database = require('../../modules/database.js')
 
 module.exports = {
 	data: new SlashCommandBuilder({ integration_types: [0,1] })
@@ -15,14 +16,16 @@ module.exports = {
         const seconds = Math.floor(uptime % 60);
         
         const uptimemsg = `${hours}h ${minutes}m ${seconds}s`;
+        const hbotinfodb = database.prepare('SELECT commandsran FROM hbotinfo LIMIT 1').get();
 
         const infoembed = new EmbedBuilder()
             .setColor(0xef2213)
             .setTitle('h bot info')
-            .setAuthor({ name: 'h bot', iconURL: 'attachment://pfp.png'})
+            //.setAuthor({ name: 'h bot', iconURL: 'attachment://pfp.png'})
             .setThumbnail('attachment://pfp.png')
             .addFields(
                 { name: 'bot uptime', value: uptimemsg },
+                { name: 'commands ran', value: String(hbotinfodb.commandsran) },
             )
             .setFooter({ text: `made with love and h by @weeniemount`, iconURL: 'attachment://weeniemount.png' });
         await interaction.reply({ embeds: [infoembed] });

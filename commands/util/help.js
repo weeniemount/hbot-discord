@@ -75,14 +75,14 @@ module.exports = {
                     .setColor(0xef2213)
                     .setTitle('useful category')
                     .setThumbnail('attachment://pfp.png')
-                    .addFields({ name: `<:helpful:${emojiids["helpful"]}> useful`, value: '/help - shows you this help page' })
+                    .addFields({ name: `<:helpful:${emojiids["helpful"]}> useful`, value: '/help - shows you this help page\n/hbotinfo - some info about h bot' })
                 await confirmation.update({ embeds: [helpinfoembed], components: [] });
             } else if (confirmation.customId === 'currency') {
                 const helpinfoembed = new EmbedBuilder()
                     .setColor(0xef2213)
                     .setTitle('currency category')
                     .setThumbnail('attachment://pfp.png')
-                    .addFields({ name: `<:hoint:${emojiids["hoint"]}> currency`, value: '/hointsbalance - shows you your hoints balance\n/hointgiver - gives you one single hoint\n/hointsgamble - get 1 - 50 hoints\n/hointleaderboard - top 10 people with the most hoints' })
+                    .addFields({ name: `<:hoint:${emojiids["hoint"]}> currency`, value: '/hointsbalance - shows you your hoints balance\n/hointgiver - gives you one single hoint\n/hointsgamble - get -50 to 50 hoints\n/hointleaderboard - top 10 people with the most hoints' })
                 await confirmation.update({ embeds: [helpinfoembed], components: [] });
             } else if (confirmation.customId === 'hfacts') {
                 const helpinfoembed = new EmbedBuilder()

@@ -3,6 +3,7 @@ const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const { token } = require('./config.json');
 const client = require('./modules/client.js')
+const database = require('./modules/database.js')
 
 client.cooldowns = new Collection();
 client.commands = new Collection();
@@ -31,6 +32,8 @@ client.once(Events.ClientReady, readyClient => {
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	const command = client.commands.get(interaction.commandName);
+
+	database.prepare('UPDATE hbotinfo SET commandsran = commandsran + ?').run(1);
 
 	if (!command) {
 		console.error(`No command matching ${interaction.commandName} was found.`);

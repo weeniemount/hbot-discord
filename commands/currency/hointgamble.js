@@ -6,7 +6,7 @@ module.exports = {
     cooldown: 60,
 	data: new SlashCommandBuilder({ integration_types: [0,1] })
 		.setName('hointsgamble')
-		.setDescription('get -50-50 hoints'),
+		.setDescription('get -50 to 50 hoints'),
 	async execute(interaction) {
         const userId = interaction.user.id
         const username = interaction.user.tag
