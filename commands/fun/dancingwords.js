@@ -13,6 +13,8 @@ module.exports = {
         .addStringOption(option =>
             option.setName('words')
             .setDescription('your words!')
+	    .setMaxLength(60)
+            .setMinLength(2)
             .setRequired(true))
         .addStringOption(option =>
             option.setName('size')
@@ -40,7 +42,7 @@ module.exports = {
         var sizetype = interaction.options.getString('size')
         var finalstring = ""
 		for (let char of wordsinput) {
-            if (char == "&" || char == "@" || char == "$" || char == "!" || char == "?") {
+            if (["&","@","$","!","?"].includes(char)) {
                 finalstring = `${finalstring}<a:${symboltable[char]}:${emojiids[char]}>`
             } else if (letterRegex.test(char) || numberRegex.test(char)) {
                 finalstring = `${finalstring}<a:${char.toLowerCase()}_:${emojiids[char.toLowerCase()]}>`
@@ -48,16 +50,7 @@ module.exports = {
                 finalstring = `${finalstring}    `
             }
         }
-        if (sizetype == "biggest") {
-            await interaction.reply(`${finalstring}`)
-        } else if (sizetype == "big") {
-            await interaction.reply(`# ${finalstring}`)
-        } else if (sizetype == "medium") {
-            await interaction.reply(`## ${finalstring}`)
-        } else if (sizetype == "small") {
-            await interaction.reply(`### ${finalstring}`)
-        } else if (sizetype == "tiny") {
-            await interaction.reply(`-# ${finalstring}`)
-        } 
+        let st = { biggest: "", big: "# ", medium: "## ", small: "###", tiny: "-#" }
+        await interaction.reply(`${st[sizetype] ?? ""}${finalstring}`) 
 	},
 };
