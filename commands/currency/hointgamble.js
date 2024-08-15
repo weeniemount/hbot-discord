@@ -22,7 +22,7 @@ module.exports = {
             console.log(`user ${interaction.user.tag} doesnt exist in the database! creating database entry for user...`)
             database.prepare('INSERT INTO users (id, username, hoints) VALUES (?, ?, ?)').run(userId, username, 0);
         }
-        if (db.prepare('SELECT hoints FROM users WHERE id = ?').get(userId) + randomhoints < 0) {
+        if (database.prepare('SELECT hoints FROM users WHERE id = ?').get(userId) + randomhoints < 0) {
             database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(0, userId);
         } else {
             database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(randomhoints, userId);
