@@ -18,7 +18,8 @@ for (const folder of commandFolders) {
 		const command = require(filePath);
 		if ('data' in command && 'execute' in command) {
 			client.commands.set(command.data.name, command);
-			cmds.push(command.data)
+			if (command.data.name == "reload" || command.data.name == "restartbot") {void(0);}
+			else {cmds.push(command.data)}
 		} else {
 			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
