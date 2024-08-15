@@ -29,14 +29,6 @@ module.exports = {
             if (!otherUser)
                 database.prepare('INSERT INTO users (id, username, hoints) VALUES (?, ?, ?)').run(userId, username, 0);
         }
-        const hointsbalance = new EmbedBuilder()
-            .setColor(0xef2213)
-            .setTitle(`${interaction.user.tag}'s hoints balance`)
-            .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
-            .setThumbnail('attachment://pfp.png')
-            .addFields(
-                { name: 'hoints:', value: `${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints} <:hoint:${emojiids["hoint"]}>` },
-            )
         if (otherUser) {
             if (otherUserBalance) {
                 const hointsbalanceotheruser = new EmbedBuilder()
@@ -55,6 +47,14 @@ module.exports = {
                 await interaction.reply({ embeds: [errorembed], ephemeral: true});
             }
         } else {
+            const hointsbalance = new EmbedBuilder()
+                .setColor(0xef2213)
+                .setTitle(`${interaction.user.tag}'s hoints balance`)
+                .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
+                .setThumbnail('attachment://pfp.png')
+                .addFields(
+                    { name: 'hoints:', value: `${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints} <:hoint:${emojiids["hoint"]}>` },
+                )
             await interaction.reply({ embeds: [hointsbalance]});
         }
 	},
