@@ -12,11 +12,11 @@ module.exports = {
             .setDescription('username of the user you want to send hoints to!')
             .setRequired(true))
         .addIntegerOption(option =>
-                option.setName('hoints')
-                .setDescription('amount of hoints to send')
-                .setRequired(true)
-	        .setMinValue(1)
-		.setMaxValue(1_000_000)),
+            option.setName('hoints')
+            .setDescription('amount of hoints to send')
+            .setRequired(true)
+            .setMinValue(1)
+            .setMaxValue(1_000_000)),
 	async execute(interaction) {
         const userId = interaction.user.id
         const userSend = interaction.options.getUser('user')
