@@ -1,10 +1,19 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder({ integration_types: [0,1] })
 		.setName('ping')
-		.setDescription('Replies with Pong!'),
+		.setDescription('replies with Pong!'),
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		const startTime = Date.now();
+		
+		const pingembed = new EmbedBuilder()
+			.setColor(0xef2213)
+			.setTitle('Pong!')
+
+		/*const endTime = Date.now();
+		const duration = endTime - startTime;
+		pingembed.addFields({ name: `time it took to respond: ${duration}ms!`, value:'   ' },)*/
+		await interaction.reply({embeds: [pingembed]});
 	},
 };
