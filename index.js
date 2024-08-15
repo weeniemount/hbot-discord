@@ -28,7 +28,7 @@ for (const folder of commandFolders) {
 client.once(Events.ClientReady, readyClient => {
 	console.log("\nIT'S H'ING TIME!")
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
-	readyClient.application.commands.set(command.data)
+	readyClient.application.commands.set(cmds)
 });
 
 client.on(Events.InteractionCreate, async interaction => {
