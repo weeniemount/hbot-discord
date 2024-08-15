@@ -45,6 +45,7 @@ var emojiids = {
     "nerd": "1273360573504946236",
     "helpful": "1273361942983213247",
     "devicon": "1273372840808157215",
+    "back": "1273691262230200421",
 }
 
 module.exports = emojiids;
