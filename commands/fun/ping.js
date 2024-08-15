@@ -9,11 +9,21 @@ module.exports = {
 		
 		const pingembed = new EmbedBuilder()
 			.setColor(0xef2213)
-			.setTitle(`Pong! ${interaction.client.ws.ping}ms. `)
-
-		/*const endTime = Date.now();
-		const duration = endTime - startTime;
-		pingembed.addFields({ name: `time it took to respond: ${duration}ms!`, value:'   ' },)*/
-		await interaction.reply({embeds: [pingembed]});
+			.setTitle(`Pong!`)
+			.addFields(
+				{name: `${interaction.client.ws.ping} ms`, value: "     "}
+			)
+		const pingembedsecret = new EmbedBuilder()
+			.setColor(0xef2213)
+			.setTitle(`Pong!`)
+			.addFields(
+				{name: "${interaction.client.ws.ping} (you got an easter egg! i love interaction.client.ws.ping ms) ms", value: "     "}
+			)
+		const randomNumber = Math.floor(Math.random() * 1000) + 1;
+		if (randomNumber == 1) {
+			await interaction.reply({embeds: [pingembedsecret]});
+		} else {
+			await interaction.reply({embeds: [pingembed]});
+		}
 	},
 };
