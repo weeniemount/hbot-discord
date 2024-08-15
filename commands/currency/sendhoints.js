@@ -22,10 +22,9 @@ module.exports = {
         const userSend = interaction.options.getUser('user')
         const hointstosend = interaction.options.getInteger('hoints')
         const user = database.prepare('SELECT * FROM users WHERE id = ?').get(userSend.id);
-
         if (user) {
             //console.log(`user ${userSend.username} already exists in the database! we can send h points to them!`)
-            if (hointstosend < 0 || userSend.id == userId) {
+            if (hointstosend < 0 || userSend.id == userId || database.prepare('SELECT hoints FROM users WHERE id = ?').get(userId).hoints < hointstosend) {
                 void(0);
             } else {
                 database.prepare('UPDATE users SET hoints = hoints - ? WHERE id = ?').run(hointstosend, userId);
@@ -42,20 +41,28 @@ module.exports = {
             const errorembed = new EmbedBuilder()
                 .setColor(0xef2213)
                 .setTitle(`you cant send negative hoints!`)
-            await interaction.reply({ embeds: [errorembed], ephemeral: true});
+            return await interaction.reply({ embeds: [errorembed], ephemeral: true});
         }
         if (userSend.id == userId) {
             const errorembed = new EmbedBuilder()
                 .setColor(0xef2213)
                 .setTitle(`you cant send hoints to yourself!`)
-            await interaction.reply({ embeds: [errorembed], ephemeral: true});
+            return await interaction.reply({ embeds: [errorembed], ephemeral: true});
         }
-        if (user) {await interaction.reply({ embeds: [sentEmbed], ephemeral: true});
-        } else {
+        if (database.prepare('SELECT hoints FROM users WHERE id = ?').get(userId).hoints < hointstosend) {
+            const errorembed = new EmbedBuilder()
+                .setColor(0xef2213)
+                .setTitle(`you dont have that much hoints!`)
+            return await interaction.reply({ embeds: [errorembed], ephemeral: true});
+        }
+        if (!user) {
             const sentembed = new EmbedBuilder()
                 .setColor(0xef2213)
                 .setTitle(`that user doent have a hoint balance!`)
-            await interaction.reply({ embeds: [sentembed], ephemeral: true});
+            return await interaction.reply({ embeds: [sentembed], ephemeral: true});
+        }
+        if (user || userSend.id != userId || hointstosend > 0) 
+            {await interaction.reply({ embeds: [sentEmbed], ephemeral: true}); 
         }
 	},
 };
