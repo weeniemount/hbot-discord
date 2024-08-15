@@ -22,25 +22,38 @@ module.exports = {
         const user = database.prepare('SELECT * FROM users WHERE id = ?').get(userSend.id);
 
         if (user) {
-            console.log(`user ${userSend} already exists in the database! we can send h points to them!`)
-            database.prepare('UPDATE users SET hoints = hoints - ? WHERE id = ?').run(hointstosend, userId);
-            database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(hointstosend, userSend.id);
+            console.log(`user ${userSend.username} already exists in the database! we can send h points to them!`)
+            if (hointstosend < 0 || userSend.id == userId) {
+                void(0);
+            } else {
+                database.prepare('UPDATE users SET hoints = hoints - ? WHERE id = ?').run(hointstosend, userId);
+                database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(hointstosend, userSend.id);
+            }
         } else {
             console.log(`user ${userSend.username} doesnt exist in the database! cant send h points to them!`)
         }
+        
         const sentEmbed = new EmbedBuilder()
             .setColor(0xef2213)
             .setTitle(`you have sent ${hointstosend} <:hoint:${emojiids["hoint"]}> hoints to user "${userSend.globalName}"!`)
-            //.setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
-            //.setThumbnail('attachment://pfp.png')
-		if (user) {await interaction.reply({ embeds: [sentEmbed], ephemeral: true});
-        } else {
+        if (hointstosend < 0) {
             const errorembed = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle(`that user doent have a hoint balance!`)
-                //.setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
-                //.setThumbnail('attachment://pfp.png')
+                .setTitle(`you cant send negative hoints!`)
             await interaction.reply({ embeds: [errorembed], ephemeral: true});
+        }
+        if (userSend.id == userId) {
+            const errorembed = new EmbedBuilder()
+                .setColor(0xef2213)
+                .setTitle(`you cant send hoints to yourself!`)
+            await interaction.reply({ embeds: [errorembed], ephemeral: true});
+        }
+        if (user) {await interaction.reply({ embeds: [sentEmbed], ephemeral: true});
+        } else {
+            const sentembed = new EmbedBuilder()
+                .setColor(0xef2213)
+                .setTitle(`that user doent have a hoint balance!`)
+            await interaction.reply({ embeds: [sentembed], ephemeral: true});
         }
 	},
 };
