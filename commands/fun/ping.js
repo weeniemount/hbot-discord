@@ -9,7 +9,7 @@ module.exports = {
 		
 		const pingembed = new EmbedBuilder()
 			.setColor(0xef2213)
-			.setTitle('Pong!')
+			.setTitle(`Pong! ${interaction.client.ws.ping}ms. `)
 
 		/*const endTime = Date.now();
 		const duration = endTime - startTime;
