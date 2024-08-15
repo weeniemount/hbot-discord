@@ -38,15 +38,22 @@ module.exports = {
                 { name: 'hoints:', value: `${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints} <:hoint:${emojiids["hoint"]}>` },
             )
         if (otherUser) {
-            const hointsbalanceotheruser = new EmbedBuilder()
-                .setColor(0xef2213)
-                .setTitle(`${otherUser.username}'s hoints balance`)
-                .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
-                .setThumbnail('attachment://pfp.png')
-                .addFields(
-                        { name: 'hoints:', value: `${otherUserBalance.hoints} <:hoint:${emojiids["hoint"]}>` },
-                )
-            await interaction.reply({ embeds: [hointsbalanceotheruser]});
+            if (otherUserBalance) {
+                const hointsbalanceotheruser = new EmbedBuilder()
+                    .setColor(0xef2213)
+                    .setTitle(`${otherUser.username}'s hoints balance`)
+                    .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
+                    .setThumbnail('attachment://pfp.png')
+                    .addFields(
+                            { name: 'hoints:', value: `${otherUserBalance.hoints} <:hoint:${emojiids["hoint"]}>` },
+                    )
+                await interaction.reply({ embeds: [hointsbalanceotheruser]});
+            } else {
+                const errorembed = new EmbedBuilder()
+                    .setColor(0xef2213)
+                    .setTitle(`that user doesnt have a hoints balance!`)
+                await interaction.reply({ embeds: [errorembed], ephemeral: true});
+            }
         } else {
             await interaction.reply({ embeds: [hointsbalance]});
         }
