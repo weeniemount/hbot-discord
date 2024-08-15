@@ -25,6 +25,7 @@ token is your bot's token.
 guildId is the id of your bot's testing server.
 clientId is the application id of your bot.
 hfactsChannelID is the id of the channel in your testing server where the bot will send user submissions for h facts. anyone can accept or decline the facts, so be sure to limit the channel to specific people!
+ownerUserID is the user id of you!
 
 once you are done with editing the file, rename it to config.json
 <!-- shelved feature for now. will come back soon
