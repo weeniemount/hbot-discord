@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { ownerUserID } = require("../../config.json")
 
 module.exports = {
 	category: 'utility',
@@ -6,10 +7,17 @@ module.exports = {
 		.setName('restartbot')
 		.setDescription('restarts the bot (GUILD SPECIFIC, ONLY WORKS IF YOU STARTED THE BOT WITH PM2.'),
 	async execute(interaction) {
-		const restartembed = new EmbedBuilder()
-            .setColor(0xef2213)
-            .setTitle('restarting h bot...')
-		await interaction.reply({embeds: [restartembed]})
-		process.exit();
+		if (interaction.user.id == ownerUserID) {
+			const restartembed = new EmbedBuilder()
+				.setColor(0xef2213)
+				.setTitle('restarting h bot...')
+			await interaction.reply({embeds: [restartembed]})
+			process.exit();
+		} else {
+			const sentembed = new EmbedBuilder()
+                .setColor(0xef2213)
+                .setTitle(`you dont have permission to execute this command!`)
+            return await interaction.reply({ embeds: [sentembed], ephemeral: true});
+		}
 	},
 };
