@@ -4,7 +4,7 @@ const { Client, Collection, Events, GatewayIntentBits, EmbedBuilder } = require(
 const { token } = require('./config.json');
 const client = require('./modules/client.js')
 const database = require('./modules/database.js')
-
+let cmds = []
 client.cooldowns = new Collection();
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -18,6 +18,7 @@ for (const folder of commandFolders) {
 		const command = require(filePath);
 		if ('data' in command && 'execute' in command) {
 			client.commands.set(command.data.name, command);
+			cmds.push(command.data)
 		} else {
 			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
@@ -27,6 +28,7 @@ for (const folder of commandFolders) {
 client.once(Events.ClientReady, readyClient => {
 	console.log("\nIT'S H'ING TIME!")
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+	readyClient.application.commands.set(cmds)
 });
 
 client.on(Events.InteractionCreate, async interaction => {
