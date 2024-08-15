@@ -10,7 +10,7 @@ module.exports = {
 	.addStringOption(option =>
 		option.setName('input')
 		.setDescription('the letter, number or symbol you want')
-		.setRequired(true)),
+		.setRequired(true).setMaxLength(2)),
 		async execute(interaction) {
 			const letterRegex = /^[a-zA-Z]+$/;
   			const numberRegex = /^[0-9]+$/;
@@ -23,7 +23,7 @@ module.exports = {
 				"?": "questionmark"
 			}
 			if (inputted.length < 2) {
-				if (inputted == "&" || inputted == "@" || inputted == "$" || inputted == "!" || inputted == "?") {
+				if (["&","@","$","!","?"].includes(inputted)) {
 					const file = new AttachmentBuilder(`images/dancingletters/${symbolfilename[inputted]}.gif`);
 					await interaction.reply({ files: [file] });
 				} else {

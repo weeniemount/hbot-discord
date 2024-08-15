@@ -13,9 +13,9 @@ module.exports = {
         const user = database.prepare('SELECT * FROM users WHERE id = ?').get(userId);
 
         if (user) {
-            console.log(`user ${interaction.user.tag} already exists in the database!`)
+            //console.log(`user ${interaction.user.tag} already exists in the database!`)
         } else {
-            console.log(`user ${interaction.user.tag} doesnt exist in the database! creating database entry for user...`)
+            //console.log(`user ${interaction.user.tag} doesnt exist in the database! creating database entry for user...`)
             database.prepare('INSERT INTO users (id, username, hoints) VALUES (?, ?, ?)').run(userId, username, 0);
         }
         database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(1, userId);

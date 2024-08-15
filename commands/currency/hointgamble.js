@@ -17,9 +17,9 @@ module.exports = {
         const randomhoints = getRandomNumber(-25, 50)
 
         if (user) {
-            console.log(`user ${interaction.user.tag} already exists in the database!`)
+            //console.log(`user ${interaction.user.tag} already exists in the database!`)
         } else {
-            console.log(`user ${interaction.user.tag} doesnt exist in the database! creating database entry for user...`)
+            //console.log(`user ${interaction.user.tag} doesnt exist in the database! creating database entry for user...`)
             database.prepare('INSERT INTO users (id, username, hoints) VALUES (?, ?, ?)').run(userId, username, 0);
         }
         if (database.prepare('SELECT hoints FROM users WHERE id = ?').get(userId) + randomhoints < 0) {
