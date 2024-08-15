@@ -83,7 +83,7 @@ module.exports = {
                         .setColor(0xef2213)
                         .setTitle('currency category')
                         .setThumbnail('attachment://pfp.png')
-                        .addFields({ name: `<:hoint:${emojiids["hoint"]}> currency`, value: '/hointsbalance - shows you your hoints balance\n/hointgiver - gives you one single hoint\n/hointsgamble - get -50 to 50 hoints\n/hointleaderboard - top 10 people with the most hoints' })
+                        .addFields({ name: `<:hoint:${emojiids["hoint"]}> currency`, value: '/hointsbalance - shows you your hoints balance\n/hointgiver - gives you one single hoint\n/hointsgamble - get -50 to 50 hoints\n/hointleaderboard - top 10 people with the most hoints\n/sendhoints <user> <hoints> - send someone some hoints!' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'hfacts') {
                     const helpinfoembed = new EmbedBuilder()
