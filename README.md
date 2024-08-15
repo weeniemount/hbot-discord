@@ -51,9 +51,6 @@ pm2 start index.js
 
 if you want to kill the bot in pm2 just run ``` pm2 kill ```
 
-# submitting h facts
-
-
 # emojis
 if you want the emojis of the bot to work, follow my steps
 
