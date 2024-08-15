@@ -14,7 +14,9 @@ module.exports = {
         .addIntegerOption(option =>
                 option.setName('hoints')
                 .setDescription('amount of hoints to send')
-                .setRequired(true)),
+                .setRequired(true)
+	        .setMinValue(1)
+		.setMaxValue(1_000_000)),
 	async execute(interaction) {
         const userId = interaction.user.id
         const userSend = interaction.options.getUser('user')
@@ -22,7 +24,7 @@ module.exports = {
         const user = database.prepare('SELECT * FROM users WHERE id = ?').get(userSend.id);
 
         if (user) {
-            console.log(`user ${userSend.username} already exists in the database! we can send h points to them!`)
+            //console.log(`user ${userSend.username} already exists in the database! we can send h points to them!`)
             if (hointstosend < 0 || userSend.id == userId) {
                 void(0);
             } else {
@@ -30,7 +32,7 @@ module.exports = {
                 database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(hointstosend, userSend.id);
             }
         } else {
-            console.log(`user ${userSend.username} doesnt exist in the database! cant send h points to them!`)
+            //console.log(`user ${userSend.username} doesnt exist in the database! cant send h points to them!`)
         }
         
         const sentEmbed = new EmbedBuilder()
