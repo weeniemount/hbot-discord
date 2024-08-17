@@ -29,7 +29,7 @@ module.exports = {
         }
         const exampleEmbed = new EmbedBuilder()
             .setColor(0xef2213)
-            .setTitle(`congrats`)
+            .setTitle(`<:info:${emojiids["info"]}> congrats`)
             //.setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
             //.setThumbnail('attachment://pfp.png')
             .addFields(

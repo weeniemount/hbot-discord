@@ -26,25 +26,25 @@ module.exports = {
         if (hointstosend < 0) {
             const errorembed = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle(`you cant send negative hoints!`)
+                .setTitle(`<:error:${emojiids["error"]}> you cant send negative hoints!`)
             return await interaction.reply({ embeds: [errorembed], ephemeral: true});
         }
         if (userSend.id == userId) {
             const errorembed = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle(`you cant send hoints to yourself!`)
+                .setTitle(`<:error:${emojiids["error"]}> you cant send hoints to yourself!`)
             return await interaction.reply({ embeds: [errorembed], ephemeral: true});
         }
         if (database.prepare('SELECT hoints FROM users WHERE id = ?').get(userId).hoints < hointstosend) {
             const errorembed = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle(`you dont have that much hoints!`)
+                .setTitle(`<:error:${emojiids["error"]}> you dont have that much hoints!`)
             return await interaction.reply({ embeds: [errorembed], ephemeral: true});
         }
         if (!user) {
             const sentembed = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle(`that user doesnt have a hoint balance!`)
+                .setTitle(`<:error:${emojiids["error"]}> that user doesnt have a hoint balance!`)
             return await interaction.reply({ embeds: [sentembed], ephemeral: true});
         }
 
@@ -62,7 +62,7 @@ module.exports = {
         
         const confirmembed = new EmbedBuilder()
             .setColor(0xef2213)
-            .setTitle(`are you sure you want to send ${hointstosend} hoints <:hoint:${emojiids["hoint"]}> to ${userSend.globalName}?`)
+            .setTitle(`<:info:${emojiids["info"]}> are you sure you want to send ${hointstosend} hoints <:hoint:${emojiids["hoint"]}> to ${userSend.globalName}?`)
 
         const response = await interaction.reply({ embeds: [confirmembed], components: [row], ephemeral: true });
         const confirmation = await response.awaitMessageComponent({ time: 60000 });
@@ -83,14 +83,14 @@ module.exports = {
                 
                 const sentEmbed = new EmbedBuilder()
                     .setColor(0xef2213)
-                    .setTitle(`you have sent ${hointstosend} hoints <:hoint:${emojiids["hoint"]}> to user ${userSend.globalName}!`)
+                    .setTitle(`<:info:${emojiids["info"]}> you have sent ${hointstosend} hoints <:hoint:${emojiids["hoint"]}> to user ${userSend.globalName}!`)
                 if (user || userSend.id != userId || hointstosend > 0) {
                     await confirmation.update({ embeds: [sentEmbed], components: [], ephemeral: true});
                 }
             } else if (confirmation.customId === 'no') {
                 const cancelembed = new EmbedBuilder()
                     .setColor(0xef2213)
-                    .setTitle(`transaction of ${hointstosend} hoints <:hoint:${emojiids["hoint"]}> to ${userSend.globalName} cancelled.`)
+                    .setTitle(`<:info:${emojiids["info"]}> transaction of ${hointstosend} hoints <:hoint:${emojiids["hoint"]}> to ${userSend.globalName} cancelled.`)
                 await confirmation.update({ embeds: [cancelembed], components: [], ephemeral: true}); 
             }
         } catch(e) {

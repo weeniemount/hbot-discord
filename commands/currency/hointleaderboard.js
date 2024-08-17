@@ -21,7 +21,7 @@ module.exports = {
         }
         const hointleaderboard = new EmbedBuilder()
             .setColor(0xef2213)
-            .setTitle(`hoint leaderboard`)
+            .setTitle(`<:info:${emojiids["info"]}> hoint leaderboard`)
             .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
             .setThumbnail('attachment://pfp.png')
             .addFields(

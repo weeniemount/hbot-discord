@@ -49,7 +49,7 @@ module.exports = {
         } else {
             const hointsbalance = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle(`${interaction.user.tag}'s hoints balance`)
+                .setTitle(`<:info:${emojiids["info"]}> ${interaction.user.tag}'s hoints balance`)
                 .setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
                 .setThumbnail('attachment://pfp.png')
                 .addFields(
