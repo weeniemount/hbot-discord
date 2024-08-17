@@ -4,6 +4,7 @@ const { token } = require('../../config.json');
 const client = require('../../modules/client.js')
 const database = require('../../modules/database.js')
 const { hfactsChannelID } = require('../../config.json');
+const emojiids = require('../../modules/emojiids.js');
 
 var userid
 var username
