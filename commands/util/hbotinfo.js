@@ -27,7 +27,7 @@ module.exports = {
             .addFields(
                 { name: 'bot uptime', value: uptimemsg },
                 { name: 'commands ran', value: String(hbotinfodb.commandsran) },
-                { name: 'version', value: 'v1.1' },
+                { name: 'version', value: 'v1.2' },
             )
             .setFooter({ text: `made with love and h by @weeniemount`, iconURL: 'attachment://weeniemount.png' });
         await interaction.reply({ embeds: [infoembed] });
