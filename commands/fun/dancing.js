@@ -1,6 +1,7 @@
 const { channel } = require('diagnostics_channel');
 const { SlashCommandBuilder } = require('discord.js');
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
+const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
 	cooldown: 5,

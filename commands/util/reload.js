@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { ownerUserID } = require("../../config.json")
+const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
 	category: 'utility',
