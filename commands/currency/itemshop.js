@@ -10,14 +10,18 @@ module.exports = {
 	async execute(interaction) {
         const currentserverid = interaction.guild.id
 
-        const page1button = new ButtonBuilder()
-            .setCustomId(`page1button`)
-            .setLabel(`page 1`)
+        const nextpage = new ButtonBuilder()
+            .setCustomId(`nextpage`)
+            .setLabel(`>`)
+            .setStyle(ButtonStyle.Primary);
+        const lastpage = new ButtonBuilder()
+            .setCustomId(`lastpage`)
+            .setLabel(`<`)
             .setStyle(ButtonStyle.Primary);
         
         
         const row = new ActionRowBuilder()
-            .addComponents(page1button);
+            .addComponents(lastpage, nextpage);
         const page1items = items.slice(0,5)
         const page1 = new EmbedBuilder()
             .setColor(0xef2213)
@@ -34,13 +38,32 @@ module.exports = {
                 });
             }
         });
+        const page2items = items.slice(5,10)
+        const page2 = new EmbedBuilder()
+            .setColor(0xef2213)
+            .setTitle(`<:info:${emojiids["info"]}> hoint shop - page 2`)
+            .setThumbnail('attachment://pfp.png')
+        page2items.forEach(item => {
+            if (!item.isanimated) {
+                page2.addFields({
+                    name: `<:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description
+                });
+            } else {
+                page2.addFields({
+                    name: `<a:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description
+                });
+            }
+        });
+
         const updateInteraction = async (interaction) => {
             const filter = i => i.user.id === interaction.user.id;
             const collector = interaction.channel.createMessageComponentCollector({ filter, time: 1200000 });
 
             collector.on('collect', async confirmation => {
-                if (confirmation.customId === 'page1button') {
+                if (confirmation.customId === 'lastpage') {
                     await confirmation.update({ embeds: [page1], components: [row] });
+                } else if (confirmation.customId === 'nextpage') {
+                    await confirmation.update({ embeds: [page2], components: [row] });
                 }
             });
             collector.on('end', collected => {
