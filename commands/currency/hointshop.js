@@ -50,7 +50,7 @@ module.exports = {
                 }
             });
         }
-        await interaction.reply({ embeds: [page1], components: [row], ephemeral: true });
+        await interaction.reply({ embeds: [page1], components: [row] });
         updateInteraction(interaction);
 	},
 };

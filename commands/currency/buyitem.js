@@ -35,25 +35,29 @@ module.exports = {
         const item = items.find(item => item.name === itemtobuy);
 
         if (item) {
-            let itemExistsInInventory = false;
-            for (let i = 0; i < inventorydata.length; i++) {
-                if (inventorydata[i].itemid === item.itemid) {
-                    inventorydata[i].quantity += 1;
-                    itemExistsInInventory = true;
-                    break;
+            if (item.price > userhoints.hoints) {
+                interaction.reply("your'e broke")
+            } else {
+                let itemExistsInInventory = false;
+                for (let i = 0; i < inventorydata.length; i++) {
+                    if (inventorydata[i].itemid === item.itemid) {
+                        inventorydata[i].quantity += 1;
+                        itemExistsInInventory = true;
+                        break;
+                    }
                 }
+                if (!itemExistsInInventory) {
+                    inventorydata.push({ itemid: item.itemid, quantity: 1 });
+                }
+
+                database.prepare('UPDATE users SET hoints = hoints - ? WHERE id = ?').run(item.price, userid);
+                database.prepare('UPDATE inventory SET inventorydata = ? WHERE userid = ?').run(JSON.stringify(inventorydata), userid);
+                const boughtitemembed = new EmbedBuilder()
+                    .setColor(0xef2213)
+                    .setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userid).hoints}`)
+                    .setThumbnail('attachment://pfp.png')
+                interaction.reply({embeds: [boughtitemembed]})
             }
-            if (!itemExistsInInventory) {
-                inventorydata.push({ itemid: item.itemid, quantity: 1 });
-            }
-            
-            database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(1, userId);
-            database.prepare('UPDATE inventory SET inventorydata = ? WHERE userid = ?').run(JSON.stringify(inventorydata), userid);
-            const boughtitemembed = new EmbedBuilder()
-                .setColor(0xef2213)
-                .setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: `)
-                .setThumbnail('attachment://pfp.png')
-            interaction.reply({embeds: [boughtitemembed]})
         }
         if (!itemfound) {
             //console.log("that item aint there wtf")
