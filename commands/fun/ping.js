@@ -9,13 +9,13 @@ module.exports = {
 		
 		const pingembed = new EmbedBuilder()
 			.setColor(0xef2213)
-			.setTitle(`Pong!`)
+			.setTitle(`<:info:${emojiids["info"]}> Pong!`)
 			.addFields(
 				{name: `${interaction.client.ws.ping} ms`, value: "     "}
 			)
 		const pingembedsecret = new EmbedBuilder()
 			.setColor(0xef2213)
-			.setTitle(`Pong!`)
+			.setTitle(`<:info:${emojiids["info"]}> Pong!`)
 			.addFields(
 				{name: "${interaction.client.ws.ping} (you got an easter egg! i love interaction.client.ws.ping ms) ms", value: "     "}
 			)

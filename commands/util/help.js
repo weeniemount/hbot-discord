@@ -52,7 +52,7 @@ module.exports = {
         
         const helpembed = new EmbedBuilder()
             .setColor(0xef2213)
-            .setTitle('h bot help')
+            .setTitle(`<:info:${emojiids["info"]}> h bot help`)
             .setAuthor({ name: 'h bot', iconURL: 'attachment://pfp.png'})
             .setThumbnail('attachment://pfp.png')
             .addFields(
@@ -67,35 +67,35 @@ module.exports = {
                 if (confirmation.customId === 'funnys') {
                     const helpinfoembed = new EmbedBuilder()
                         .setColor(0xef2213)
-                        .setTitle('funnys category')
+                        .setTitle(`<:info:${emojiids["info"]}> funnys category`)
                         .setThumbnail('attachment://pfp.png')
                         .addFields({ name: `<:steamhappy:${emojiids["steamhappy"]}> funnys`, value: '/dancingh - shows you a dancing h gif\n/dancing <letter/number/symbol> - show a dancing letter, number or smybol of your choice\n/dancingwords <words> - make your words out of dancing letters!\n/ping - pong!' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'useful') {
                     const helpinfoembed = new EmbedBuilder()
                         .setColor(0xef2213)
-                        .setTitle('useful category')
+                        .setTitle(`<:info:${emojiids["info"]}> useful category`)
                         .setThumbnail('attachment://pfp.png')
                         .addFields({ name: `<:helpful:${emojiids["helpful"]}> useful`, value: '/help - shows you this help page\n/hbotinfo - some info about h bot' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'currency') {
                     const helpinfoembed = new EmbedBuilder()
                         .setColor(0xef2213)
-                        .setTitle('currency category')
+                        .setTitle(`<:info:${emojiids["info"]}> currency category`)
                         .setThumbnail('attachment://pfp.png')
                         .addFields({ name: `<:hoint:${emojiids["hoint"]}> currency`, value: '/hointsbalance - shows you your hoints balance\n/hointgiver - gives you one single hoint\n/hointsgamble - get -25 to 50 hoints\n/hointleaderboard - top 10 people with the most hoints\n/sendhoints <user> <hoints> - send someone some hoints!' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'hfacts') {
                     const helpinfoembed = new EmbedBuilder()
                         .setColor(0xef2213)
-                        .setTitle('h facts category')
+                        .setTitle(`<:info:${emojiids["info"]}> h facts category`)
                         .setThumbnail('attachment://pfp.png')
                         .addFields({ name: `<:nerd:${emojiids["nerd"]}> h facts`, value: '/hacts <OPTIONAL:userfacts> - shows you a random fact! userfacts turns on user submitted facts\n/submithfact - submit an h fact for review!' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'devcommands') {
                     const helpinfoembed = new EmbedBuilder()
                         .setColor(0xef2213)
-                        .setTitle('dev commands category')
+                        .setTitle(`<:management:${emojiids["management"]}> dev commands category`)
                         .setThumbnail('attachment://pfp.png')
                         .addFields({ name: `<:devicon:${emojiids["devicon"]}> dev commands`, value: '/reload <command> - reloads a command\n/restartbot - restart the bot (ONLY WORKS IF YOU STARTED BOT WITH PM2)' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });

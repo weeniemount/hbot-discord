@@ -28,12 +28,12 @@ module.exports = {
 				await interaction.reply(`Command \`${newCommand.data.name}\` was reloaded!`);
 			} catch (error) {
 				console.error(error);
-				await interaction.reply(`There was an error while reloading a command \`${command.data.name}\`:\n\`${error.message}\``);
+				await interaction.reply(`<:management:${emojiids["management"]}> There was an error while reloading a command \`${command.data.name}\`:\n\`${error.message}\``);
 			}
 		} else {
 			const sentembed = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle(`you dont have permission to execute this command!`)
+                .setTitle(`<:management:${emojiids["management"]}> you dont have permission to execute this command!`)
             return await interaction.reply({ embeds: [sentembed], ephemeral: true});
 		}
 	},

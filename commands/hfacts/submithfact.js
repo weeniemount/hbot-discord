@@ -25,7 +25,7 @@ module.exports = {
         userpfp = interaction.user.avatarURL()
         const fact = new EmbedBuilder()
             .setColor(0xef2213)
-            .setTitle("your h fact has been submitted")
+            .setTitle(`<:info:${emojiids["info"]}> your h fact has been submitted`)
 		await interaction.reply({embeds: [fact], ephemeral: true});
 
         // submmiting
@@ -46,7 +46,7 @@ module.exports = {
         if (channel && channel.isTextBased()) {    
             const embed = new EmbedBuilder()
                 .setColor(0xef2213)
-                .setTitle('h fact submission')
+                .setTitle(`<:info:${emojiids["info"]}> h fact submission`)
                 .addFields(
                     { name: 'h fact:', value: hfact },
                 )
@@ -59,7 +59,7 @@ module.exports = {
                 if (confirmation.customId === 'accept') {
                     const embedaccept = new EmbedBuilder()
                         .setColor(0xef2213)
-                        .setTitle('h fact submission')
+                        .setTitle(`<:info:${emojiids["info"]}> h fact submission`)
                         .addFields(
                             { name: `h fact "${hfact}" has been accepted`, value: 'yey!' },
                         )
@@ -69,7 +69,7 @@ module.exports = {
                 } else if (confirmation.customId === 'decline') {
                     const embeddecline = new EmbedBuilder()
                         .setColor(0xef2213)
-                        .setTitle('h fact submission')
+                        .setTitle(`<:info:${emojiids["info"]}> h fact submission`)
                         .addFields(
                             { name: `h fact "${hfact}" has been declined`, value: 'aww...' },
                         )
