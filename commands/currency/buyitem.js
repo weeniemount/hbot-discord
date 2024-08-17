@@ -36,7 +36,11 @@ module.exports = {
 
         if (item) {
             if (item.price > userhoints.hoints) {
-                interaction.reply("your'e broke")
+                const errorembed = new EmbedBuilder()
+                    .setColor(0xef2213)
+                    .setTitle(`<:error:${emojiids["error"]}> you dont have enough hoints for that item!`)
+                    .setThumbnail('attachment://pfp.png')
+                interaction.reply({embeds: [errorembed]})
             } else {
                 let itemExistsInInventory = false;
                 for (let i = 0; i < inventorydata.length; i++) {
@@ -58,9 +62,12 @@ module.exports = {
                     .setThumbnail('attachment://pfp.png')
                 interaction.reply({embeds: [boughtitemembed]})
             }
-        }
-        if (!itemfound) {
-            //console.log("that item aint there wtf")
+        } else {
+            const errorembed = new EmbedBuilder()
+                .setColor(0xef2213)
+                .setTitle(`<:error:${emojiids["error"]}> that item doesnt exist!`)
+                .setThumbnail('attachment://pfp.png')
+            interaction.reply({embeds: [errorembed]})
         }
 	},
 };
