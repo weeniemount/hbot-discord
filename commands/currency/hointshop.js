@@ -13,7 +13,6 @@ module.exports = {
         const page1button = new ButtonBuilder()
             .setCustomId(`page1button`)
             .setLabel(`page 1`)
-            //.setEmoji(emojiids["steamhappy"])
             .setStyle(ButtonStyle.Primary);
         
         
