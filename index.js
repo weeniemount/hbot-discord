@@ -83,4 +83,8 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
+process.on('uncaughtException', function(err) {
+	console.log('Caught exception: ' + err);
+});
+
 client.login(token);

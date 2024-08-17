@@ -54,6 +54,8 @@ var emojiids = {
     "info": "1274409915737440356",
     // item emohis
     "swaglies": "1274424090001805353",
+    "weenie": "1274462147342237778",
+    "bill_nachos": "1274463569702031383",
 }
 
 module.exports = emojiids;

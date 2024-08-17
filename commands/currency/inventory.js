@@ -1,36 +1,25 @@
 const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
 const emojiids = require('../../modules/emojiids.js')
 const items = require('../../modules/items.js')
-const { guildId } = require('../../config.json')
+const database = require('../../modules/database.js')
 
 module.exports = {
 	data: new SlashCommandBuilder({ integration_types: [0,1] })
-		.setName('hointshop')
-		.setDescription('whats in the shop?'),
+		.setName('inventory')
+		.setDescription('view your inventory!'),
 	async execute(interaction) {
-        const currentserverid = interaction.guild.id
-
-        const page1button = new ButtonBuilder()
-            .setCustomId(`page1button`)
-            .setLabel(`page 1`)
-            .setStyle(ButtonStyle.Primary);
-        
-        
-        const row = new ActionRowBuilder()
-            .addComponents(page1button);
-        const page1items = items.slice(0,5)
-        const page1 = new EmbedBuilder()
+        const userid = interaction.user.id
+        const inventoryembed = new EmbedBuilder()
             .setColor(0xef2213)
-            .setTitle(`<:info:${emojiids["info"]}> hoint shop - page 1`)
+            .setTitle(`<:info:${emojiids["info"]}> ${interaction.user.tag}'s inventory`)
             .setThumbnail('attachment://pfp.png')
-        page1items.forEach(item => {
-            if (!item.isanimated) {
-                page1.addFields({
-                    name: `<:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description
-                });
-            } else {
-                page1.addFields({
-                    name: `<a:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description
+        var inventorydata = JSON.parse(database.prepare('SELECT * FROM inventory WHERE userid = ?').get(userid).inventorydata)
+        inventorydata.forEach(({ itemid, quantity }) => {
+            const itemdetails = items.find(item => item.itemid === itemid);
+            if (itemdetails) {
+                const itemEmoji = itemdetails.isanimated ? `<a:${itemdetails.itemid}:${itemdetails.emoji}>` : `<:${itemdetails.itemid}:${itemdetails.emoji}>`;
+                inventoryembed.addFields({
+                    name: `${itemEmoji} ${itemdetails.name}`, value: `${itemdetails.description}\nquantity: ${quantity}`,
                 });
             }
         });
@@ -49,7 +38,7 @@ module.exports = {
                 }
             });
         }
-        await interaction.reply({ embeds: [page1], components: [row] });
+        await interaction.reply({ embeds: [inventoryembed] });
         updateInteraction(interaction);
 	},
 };
