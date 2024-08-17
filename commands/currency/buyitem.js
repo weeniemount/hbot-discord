@@ -32,12 +32,29 @@ module.exports = {
         }
 
         var itemfound = false
-        items.forEach(row => {
-            if (row.name == itemtobuy) {
-                itemfound = true
-                await interaction.reply("i think i added an item to your inventory? im not sure check the db file lmfao")
+        const item = items.find(item => item.name === itemtobuy);
+
+        if (item) {
+            let itemExistsInInventory = false;
+            for (let i = 0; i < inventorydata.length; i++) {
+                if (inventorydata[i].itemid === item.itemid) {
+                    inventorydata[i].quantity += 1;
+                    itemExistsInInventory = true;
+                    break;
+                }
             }
-        });
+            if (!itemExistsInInventory) {
+                inventorydata.push({ itemid: item.itemid, quantity: 1 });
+            }
+
+            // Update inventory in the database
+            database.prepare('UPDATE inventory SET inventorydata = ? WHERE userid = ?').run(JSON.stringify(inventorydata), userid);
+            const boughtitemembed = new EmbedBuilder()
+                .setColor(0xef2213)
+                .setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: `)
+                .setThumbnail('attachment://pfp.png')
+            interaction.reply({embeds: [boughtitemembed]})
+        }
         if (!itemfound) {
             //console.log("that item aint there wtf")
         }

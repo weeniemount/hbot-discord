@@ -24,9 +24,17 @@ module.exports = {
             .setColor(0xef2213)
             .setTitle(`<:info:${emojiids["info"]}> hoint shop - page 1`)
             .setThumbnail('attachment://pfp.png')
-            .addFields(
-                { name: `<:${page1items[0].itemid}:${page1items[0].emoji}> ${page1items[0].name} : ${page1items[0].price} <:hoint:${emojiids["hoint"]}>`, value: `${page1items[0].description}` },
-            )
+        page1items.forEach(item => {
+            if (!item.isanimated) {
+                page1.addFields({
+                    name: `<:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description, inline: true
+                });
+            } else {
+                page1.addFields({
+                    name: `<a:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description, inline: true
+                });
+            }
+        });
         const updateInteraction = async (interaction) => {
             const filter = i => i.user.id === interaction.user.id;
             const collector = interaction.channel.createMessageComponentCollector({ filter, time: 1200000 });
