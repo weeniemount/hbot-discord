@@ -12,12 +12,15 @@ module.exports = {
             .setRequired(true)),
 	async execute(interaction) {
         const itemtobuy = interaction.options.getString('item')
+        var itemfound = false
         items.forEach(row => {
             if (row.name == itemtobuy) {
+                itemfound = true
                 console.log("item in le table")
-                return
             }
         });
-        console.log("that item anint there wtf")
+        if (!itemfound) {
+            console.log("that item aint there wtf")
+        }
 	},
 };
