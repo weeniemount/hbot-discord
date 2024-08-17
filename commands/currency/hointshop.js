@@ -39,7 +39,7 @@ module.exports = {
                 }
             });
         }
-        await interaction.reply({ embeds: [helpembed], components: [row], ephemeral: true });
+        await interaction.reply({ embeds: [page1], components: [row], ephemeral: true });
         updateInteraction(interaction);
 	},
 };
