@@ -2,7 +2,8 @@ const { EmbedBuilder, AttachmentBuilder, SlashCommandBuilder} = require('discord
 
 const file = new AttachmentBuilder('images/pfp.png');
 const weeniemount = new AttachmentBuilder(`images/weeniemount.png`);
-const database = require('../../modules/database.js')
+const database = require('../../modules/database.js');
+const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
 	data: new SlashCommandBuilder({ integration_types: [0,1] })
@@ -20,7 +21,7 @@ module.exports = {
 
         const infoembed = new EmbedBuilder()
             .setColor(0xef2213)
-            .setTitle('h bot info')
+            .setTitle(`<:info:${emojiids["info"]}> h bot info`)
             //.setAuthor({ name: 'h bot', iconURL: 'attachment://pfp.png'})
             .setThumbnail('attachment://pfp.png')
             .addFields(
