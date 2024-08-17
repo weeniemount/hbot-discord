@@ -61,7 +61,7 @@ client.on(Events.InteractionCreate, async interaction => {
 			const expiredTimestamp = Math.round(expirationTime / 1000);
 			const errorembed = new EmbedBuilder()
 					.setColor(0xef2213)
-					.setTitle(`the command \`${command.data.name}\` is on a cooldown for you! you can use it again <t:${expiredTimestamp}:R>`)
+					.setTitle(`<:error:${emojiids["error"]}> the command \`${command.data.name}\` is on a cooldown for you! you can use it again <t:${expiredTimestamp}:R>`)
 			return interaction.reply({ embeds: [errorembed], ephemeral: true });
 			//return interaction.reply({ content: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
 		}

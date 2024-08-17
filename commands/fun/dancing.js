@@ -33,14 +33,14 @@ module.exports = {
 					} else {
 						const errorembed = new EmbedBuilder()
 							.setColor(0xef2213)
-							.setTitle('that symbol isnt allowed!')
+							.setTitle(`<:error:${emojiids["error"]}> that symbol isnt allowed!`)
 						await interaction.reply({ embeds: [errorembed], ephemeral: true });
 					}
 				}
 			} else if (inputted.length >= 2) {
 				const errorembed = new EmbedBuilder()
 					.setColor(0xef2213)
-					.setTitle('you cant put something longer then 1 character!')
+					.setTitle(`<:error:${emojiids["error"]}> you cant put something longer then 1 character!`)
 				await interaction.reply({ embeds: [errorembed], ephemeral: true });
 			}
 	},

@@ -43,7 +43,7 @@ module.exports = {
             } else {
                 const errorembed = new EmbedBuilder()
                     .setColor(0xef2213)
-                    .setTitle(`that user doesnt have a hoints balance!`)
+                    .setTitle(`<:error:${emojiids["error"]}> that user doesnt have a hoints balance!`)
                 await interaction.reply({ embeds: [errorembed], ephemeral: true});
             }
         } else {
