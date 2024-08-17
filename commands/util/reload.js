@@ -17,7 +17,7 @@ module.exports = {
 			const command = interaction.client.commands.get(commandName);
 
 			if (!command) {
-				return interaction.reply(`There is no command with name \`${commandName}\`!`);
+				return interaction.reply(`<:management:${emojiids["management"]}> There is no command with name \`${commandName}\`!`);
 			}
 
 			delete require.cache[require.resolve(`../${command.category}/${command.data.name}.js`)];
