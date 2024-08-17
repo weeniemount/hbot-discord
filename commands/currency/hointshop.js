@@ -27,11 +27,11 @@ module.exports = {
         page1items.forEach(item => {
             if (!item.isanimated) {
                 page1.addFields({
-                    name: `<:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description, inline: true
+                    name: `<:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description
                 });
             } else {
                 page1.addFields({
-                    name: `<a:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description, inline: true
+                    name: `<a:${item.itemid}:${item.emoji}> ${item.name} : ${item.price} <:hoint:${emojiids["hoint"]}>`, value: item.description
                 });
             }
         });
