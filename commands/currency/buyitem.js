@@ -46,8 +46,8 @@ module.exports = {
             if (!itemExistsInInventory) {
                 inventorydata.push({ itemid: item.itemid, quantity: 1 });
             }
-
-            // Update inventory in the database
+            
+            database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(1, userId);
             database.prepare('UPDATE inventory SET inventorydata = ? WHERE userid = ?').run(JSON.stringify(inventorydata), userid);
             const boughtitemembed = new EmbedBuilder()
                 .setColor(0xef2213)
