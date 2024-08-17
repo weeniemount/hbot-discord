@@ -17,7 +17,7 @@ module.exports = {
         
         
         const row = new ActionRowBuilder()
-            .addComponents(page1);
+            .addComponents(page1button);
         
         const page1 = new EmbedBuilder()
             .setColor(0xef2213)
