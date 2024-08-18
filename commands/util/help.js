@@ -90,7 +90,7 @@ module.exports = {
                         .setColor(0xef2213)
                         .setTitle(`<:info:${emojiids["info"]}> h facts category`)
                         .setThumbnail('attachment://pfp.png')
-                        .addFields({ name: `<:nerd:${emojiids["nerd"]}> h facts`, value: '/hacts <OPTIONAL:userfacts> - shows you a random fact! userfacts turns on user submitted facts\n/submithfact - submit an h fact for review!' })
+                        .addFields({ name: `<:nerd:${emojiids["nerd"]}> h facts`, value: '/hfacts <OPTIONAL:userfacts> - shows you a random fact! userfacts turns on user submitted facts\n/submithfact - submit an h fact for review!' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'devcommands') {
                     const helpinfoembed = new EmbedBuilder()
