@@ -58,7 +58,7 @@ module.exports = {
                 database.prepare('UPDATE inventory SET inventorydata = ? WHERE userid = ?').run(JSON.stringify(inventorydata), userid);
                 const boughtitemembed = new EmbedBuilder()
                     .setColor(0xef2213)
-                    .setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userid).hoints}`)
+                    .setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userid).hoints} <:hoint:${emojiids["hoint"]}>`)
                     .setThumbnail('attachment://pfp.png')
                 interaction.reply({embeds: [boughtitemembed]})
             }
