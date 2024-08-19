@@ -50,7 +50,7 @@ module.exports = {
                 finalstring = `${finalstring}    `
             }
         }
-        let st = { biggest: "", big: "# ", medium: "## ", small: "###", tiny: "-#" }
+        let st = { biggest: "", big: "# ", medium: "## ", small: "### ", tiny: "-# " }
         await interaction.reply(`${st[sizetype] ?? ""}${finalstring}`) 
 	},
 };
