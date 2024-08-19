@@ -6,7 +6,7 @@ https://discord.com/oauth2/authorize?client_id=1272230120521732107
 h
 
 ![dancing h](images/dancingletters/h.gif)
-
+# how 2 h bot
 <!-- install nodejs, clone the repo and run ```npm install discord.js better-sqlite3 lyntr.js``` -->
 install nodejs, clone the repo and run ```npm install discord.js better-sqlite3 pm2```
 
