@@ -49,7 +49,7 @@ module.exports = {
 		const embed = new EmbedBuilder()
 			.setColor(0xef2213)
 			.setTitle('conversion complete!')
-			.addFields({ name: 'result', value: result });
+			.addFields({ name: 'result:', value: result });
 
 		await interaction.reply({ embeds: [embed] });
 	},
