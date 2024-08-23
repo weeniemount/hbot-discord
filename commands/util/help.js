@@ -76,7 +76,7 @@ module.exports = {
                         .setColor(0xef2213)
                         .setTitle(`<:info:${emojiids["info"]}> useful category`)
                         .setThumbnail('attachment://pfp.png')
-                        .addFields({ name: `<:helpful:${emojiids["helpful"]}> useful`, value: '/help - shows you this help page\n/hbotinfo - some info about h bot\n/hinary - encode text to h binary' })
+                        .addFields({ name: `<:helpful:${emojiids["helpful"]}> useful`, value: '/help - shows you this help page\n/hbotinfo - some info about h bot\n/hinary - encode/decode text to/from h binary' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'currency') {
                     const helpinfoembed = new EmbedBuilder()
