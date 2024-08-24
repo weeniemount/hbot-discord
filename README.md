@@ -1,5 +1,5 @@
 # hbot-discord
-![badge](images/github/dancinghapproved.svg) ![badge](images/github/jsicon.svg) ![badge](images/github/madewithjs.svg) ![badge][https://img.shields.io/discord/1272481386443313233?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2](https://discord.gg/bNeQwCBb) ![badge](images/github/badges-awesome-green.svg)
+![badge](images/github/dancinghapproved.svg) ![badge](images/github/jsicon.svg) ![badge](images/github/madewithjs.svg) [![badge][https://img.shields.io/discord/1272481386443313233?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2]](https://discord.gg/bNeQwCBb) ![badge](images/github/badges-awesome-green.svg)
 
 https://discord.com/oauth2/authorize?client_id=1272230120521732107
 
