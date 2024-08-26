@@ -27,7 +27,7 @@ module.exports = {
         } else {
             database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(randomhoints, userId);
         }
-        const exampleEmbed = new EmbedBuilder()
+        const gamblemebed = new EmbedBuilder()
             .setColor(0xef2213)
             .setTitle(`<:info:${emojiids["info"]}> congrats`)
             //.setAuthor({ name: 'h bot', iconURL: interaction.client.user.avatarURL()})
@@ -35,6 +35,6 @@ module.exports = {
             .addFields(
                 { name: `you got ${randomhoints} hoints <:hoint:${emojiids["hoint"]}>!`, value: `your current amount of hoints: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userId).hoints} <:hoint:${emojiids["hoint"]}>` },
             )
-		await interaction.reply({ embeds: [exampleEmbed], ephemeral: true});
+		await interaction.reply({ embeds: [gamblemebed], ephemeral: true});
 	},
 };
