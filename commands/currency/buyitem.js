@@ -56,10 +56,17 @@ module.exports = {
 
                 database.prepare('UPDATE users SET hoints = hoints - ? WHERE id = ?').run(item.price, userid);
                 database.prepare('UPDATE inventory SET inventorydata = ? WHERE userid = ?').run(JSON.stringify(inventorydata), userid);
+                if (item.itemid == "grad_man_plush") {
+                    database.prepare('UPDATE users SET hoints = hoints + ? WHERE id = ?').run(item.price, "745189431547527168");
+                }
                 const boughtitemembed = new EmbedBuilder()
                     .setColor(0xef2213)
-                    .setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userid).hoints} <:hoint:${emojiids["hoint"]}>`)
                     .setThumbnail('attachment://pfp.png')
+                if (item.itemid == "grad_man_plush" ) {
+                    boughtitemembed.setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userid).hoints} <:hoint:${emojiids["hoint"]}>\n PS: due to licensing fees, your 23 hoints got sent to Gradient Man.`)
+                } else {
+                    boughtitemembed.setTitle(`<:checkmark:${emojiids["checkmark"]}> you have bought "${itemtobuy}" for ${item.price} <:hoint:${emojiids["hoint"]}>!\n your hoints balance: ${database.prepare("SELECT hoints FROM users WHERE id = ?").get(userid).hoints} <:hoint:${emojiids["hoint"]}>`)
+                }
                 interaction.reply({embeds: [boughtitemembed]})
             }
         } else {

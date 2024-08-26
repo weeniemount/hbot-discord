@@ -59,6 +59,7 @@ var emojiids = {
     "bill_nachos": "1274463569702031383",
     "bar_of_soap": "1274470575213117541",
     "golden_bar_of_soap": "1274471769863880888",
+    "gradmanplush": "1277660000948457543",
 }
 
 module.exports = emojiids;
