@@ -2,8 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('hinary')
-		.setDescription('encode text to H/h binary or decode H/h binary to text.')
+		.setName('ginary')
+		.setDescription('encode text to G/g binary or decode G/g binary to text.')
 		.addStringOption(option => 
 			option.setName('action')
 				.setDescription('encode, or decode?')
@@ -26,11 +26,11 @@ module.exports = {
 		}
 
 		function binaryToCustom(binaryString) {
-			return binaryString.replace(/1/g, 'H').replace(/0/g, 'h');
+			return binaryString.replace(/1/g, 'G').replace(/0/g, 'g');
 		}
 
 		function customToBinary(customString) {
-			return customString.replace(/H/g, '1').replace(/h/g, '0');
+			return customString.replace(/G/g, '1').replace(/g/g, '0');
 		}
 
 		function binaryToText(binaryString) {
