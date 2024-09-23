@@ -69,7 +69,7 @@ module.exports = {
                         .setColor(0xef2213)
                         .setTitle(`<:info:${emojiids["info"]}> funnys category`)
                         .setThumbnail('attachment://pfp.png')
-                        .addFields({ name: `<:steamhappy:${emojiids["steamhappy"]}> funnys`, value: '/dancingh - shows you a dancing h gif\n/dancing <letter/number/symbol> - show a dancing letter, number or smybol of your choice\n/dancingwords <words> - make your words out of dancing letters!\n/ping - pong!' })
+                        .addFields({ name: `<:steamhappy:${emojiids["steamhappy"]}> funnys`, value: '/dancingh - shows you a dancing h gif\n/dancing <letter/number/symbol> - show a dancing letter, number or smybol of your choice\n/dancingwords <words> - make your words out of dancing letters!\n/ping - pong!\n/findtheh - makes a table of letters, find the h!' })
                     await confirmation.update({ embeds: [helpinfoembed], components: [new ActionRowBuilder().addComponents(backButton)] });
                 } else if (confirmation.customId === 'useful') {
                     const helpinfoembed = new EmbedBuilder()
