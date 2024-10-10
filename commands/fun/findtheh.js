@@ -3,20 +3,20 @@ const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('findtheh')
-        .setDescription('makes a board of random letters, find the h!'),
+        .setName('findtheg')
+        .setDescription('makes a board of random letters, find the g!'),
     async execute(interaction) {
         const buttons = [];
-        const letters = "abcdefghijklmnopqrstuvwxyz".replace("h", "");
+        const letters = "abcdefghijklmnopqrstuvwxyz".replace("g", "");
         const hButtonIndex = Math.floor(Math.random() * 25);
 
         for (let i = 0; i < 25; i++) {
             const randomLetter = letters.charAt(Math.floor(Math.random() * letters.length));
-            const emojiId = i === hButtonIndex ? emojiids["h"] : emojiids[randomLetter];
+            const emojiId = i === hButtonIndex ? emojiids["g"] : emojiids[randomLetter];
 
             buttons.push(
                 new ButtonBuilder()
-                    .setCustomId(i === hButtonIndex ? `theh_${i}` : `everythingelse_${i}`)
+                    .setCustomId(i === hButtonIndex ? `theg_${i}` : `everythingelse_${i}`)
                     .setEmoji(emojiId)
                     .setStyle(ButtonStyle.Primary)
             );
@@ -35,20 +35,20 @@ module.exports = {
                 time: 60000,
             });
 
-            if (confirmation.customId.startsWith('theh')) {
+            if (confirmation.customId.startsWith('theg')) {
                 const congratembed = new EmbedBuilder()
                     .setColor(0xef2213)
-                    .setTitle(`<:checkmark:${emojiids["checkmark"]}> you found the h! congrats!`);
+                    .setTitle(`<:checkmark:${emojiids["checkmark"]}> you found the g! congrats!`);
                 await confirmation.update({ embeds: [congratembed], components: [] });
             } else {
                 const errorembed = new EmbedBuilder()
                     .setColor(0xef2213)
-                    .setTitle(`<:error:${emojiids["error"]}> oh no! that wasnt the h!`);
+                    .setTitle(`<:error:${emojiids["error"]}> oh no! that wasnt the g!`);
                 await confirmation.update({ embeds: [errorembed], components: [] });
             }
         } catch (e) {
             console.log(`No interaction was received. Error: ${e.message}`);
-            await interaction.editReply({ content: 'No one found the H in time! Try again later.', components: [] });
+            await interaction.editReply({ content: 'No one found the G in time! Try again later.', components: [] });
         }
     }
 }
