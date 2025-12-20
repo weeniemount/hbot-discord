@@ -7,7 +7,7 @@ const emojiids = require('../../modules/emojiids.js');
 const file = new AttachmentBuilder('images/pfp.png');
 module.exports = {
     cooldown: 5,
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('dancingwords')
 		.setDescription('make your words out of dancing letters!')
         .addStringOption(option =>

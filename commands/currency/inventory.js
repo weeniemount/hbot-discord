@@ -4,7 +4,7 @@ const items = require('../../modules/items.js')
 const database = require('../../modules/database.js')
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('inventory')
 		.setDescription('view your inventory!'),
 	async execute(interaction) {

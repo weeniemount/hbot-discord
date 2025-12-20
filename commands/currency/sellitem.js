@@ -4,7 +4,7 @@ const database = require('../../modules/database.js')
 const items = require('../../modules/items.js')
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('sellitem')
 		.setDescription('sell an item from the shop!')
         .addStringOption(option =>

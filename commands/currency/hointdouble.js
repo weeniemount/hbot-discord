@@ -4,7 +4,7 @@ const emojiids = require('../../modules/emojiids.js')
 
 module.exports = {
     cooldown: 60,
-    data: new SlashCommandBuilder({ integration_types: [0,1] })
+    data: new SlashCommandBuilder()
         .setName('hointdouble')
         .setDescription('double your hoints or lose them all')
         .addIntegerOption(option =>

@@ -6,7 +6,7 @@ const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
     cooldown: 30,
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('hointleaderboard')
 		.setDescription('top 10 people with the most hoints'),
 	async execute(interaction) {

@@ -3,7 +3,7 @@ const database = require('../../modules/database.js');
 const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('hointsbalance')
 		.setDescription('hoints balance')
         .addUserOption(option =>

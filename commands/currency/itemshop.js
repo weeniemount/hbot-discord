@@ -4,7 +4,7 @@ const items = require('../../modules/items.js')
 const { guildId } = require('../../config.json')
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('itemshop')
 		.setDescription('whats in the shop?'),
 	async execute(interaction) {

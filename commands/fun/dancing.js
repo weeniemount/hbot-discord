@@ -5,7 +5,7 @@ const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
 	cooldown: 5,
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 	.setName('dancing')
 	.setDescription('send a dancing letter, number or symbol of your choice in chat')
 	.addStringOption(option =>

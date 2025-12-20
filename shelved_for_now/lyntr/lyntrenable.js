@@ -4,7 +4,7 @@ const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const database = require('../../modules/database.js');
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('lyntrenable')
 		.setDescription('enables lyntr functionallity')
         .addStringOption(option =>

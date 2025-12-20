@@ -12,7 +12,7 @@ var hfact
 var userpfp
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('submithfact')
 		.setDescription('submit an h fact for review!')
         .addStringOption(option =>

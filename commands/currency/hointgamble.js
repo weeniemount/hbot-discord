@@ -4,7 +4,7 @@ const emojiids = require("../../modules/emojiids.js")
 
 module.exports = {
     cooldown: 60,
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('hointsgamble')
 		.setDescription('get -25 to 50 hoints'),
 	async execute(interaction) {

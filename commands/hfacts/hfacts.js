@@ -3,7 +3,7 @@ const hfactstable = require('../../modules/hfactstable.js')
 const database = require("../../modules/database.js")
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('hfacts')
 		.setDescription('gives you a random h fact!')
 		.addBooleanOption(option =>

@@ -6,7 +6,7 @@ const file = new AttachmentBuilder('images/pfp.png');
 const weeniemount = new AttachmentBuilder(`images/weeniemount.png`);
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('help')
 		.setDescription('h bot commands!'),
 	async execute(interaction) {

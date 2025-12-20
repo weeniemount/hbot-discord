@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const emojiids = require('../../modules/emojiids.js');
 
 module.exports = {
-	data: new SlashCommandBuilder({ integration_types: [0,1] })
+	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('replies with Pong!'),
 	async execute(interaction) {
