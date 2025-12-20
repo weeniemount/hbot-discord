@@ -1,8 +1,7 @@
 const { REST, Routes } = require('discord.js');
+const { clientId, guildId, token } = require('./config.json');
 const fs = require('node:fs');
 const path = require('node:path');
-dotenv = require('dotenv');
-dotenv.config();
 
 const commands = [];
 const guildCommands = [];
@@ -10,7 +9,6 @@ const guildCommands = [];
 function getCommandFiles(dir) {
 	let files = [];
 	const entries = fs.readdirSync(dir, { withFileTypes: true });
-
 	for (const entry of entries) {
 		const fullPath = path.join(dir, entry.name);
 		if (entry.isDirectory()) {
@@ -26,46 +24,53 @@ const commandFiles = getCommandFiles('./commands');
 
 for (const file of commandFiles) {
 	const command = require(path.resolve(file));
-	const json = command.data.toJSON();
-
-	const extras = {
-		integration_types: [0, 1],
-		contexts: [0, 1, 2],
-	};
-	Object.assign(json, extras);
-
-	if (json.name === 'restart' && process.env.DEV_GUILD_ID) {
-		guildCommands.push(json);
+	
+	// Check if command has required properties
+	if ('data' in command && 'execute' in command) {
+		const json = command.data.toJSON();
+		
+		// Add integration types and contexts for user install commands
+		const extras = {
+			integration_types: [0, 1], // 0 for guild, 1 for user
+			contexts: [0, 1, 2], // 0 for guild, 1 for app DMs, 2 for GDMs and other DMs
+		};
+		Object.assign(json, extras);
+		
+		// Check if command should be guild-only (dev commands)
+		if (json.name === 'reload' || json.name === 'restartbot' || json.name === 'restart') {
+			guildCommands.push(json);
+		} else {
+			commands.push(json);
+		}
 	} else {
-		commands.push(json);
+		console.log(`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`);
 	}
 }
 
-const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+const rest = new REST({ version: '10' }).setToken(token);
 
 (async () => {
 	try {
-		console.log(`Started refreshing application (/) commands.`);
-
-		// global commands
+		console.log(`Started refreshing ${commands.length} global application (/) commands.`);
+		console.log(`Started refreshing ${guildCommands.length} guild-specific application (/) commands.`);
+		
 		if (commands.length > 0) {
-			await rest.put(
-				Routes.applicationCommands(process.env.CLIENT_ID),
+			const data = await rest.put(
+				Routes.applicationCommands(clientId),
 				{ body: commands }
 			);
-			console.log(`Registered ${commands.length} global commands.`);
+			console.log(`Successfully reloaded ${data.length} global application (/) commands.`);
 		}
-
-		// dev guild commands
-		if (guildCommands.length > 0 && process.env.DEV_GUILD_ID) {
-			await rest.put(
-				Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.DEV_GUILD_ID),
+		
+		if (guildCommands.length > 0) {
+			const dataGuild = await rest.put(
+				Routes.applicationGuildCommands(clientId, guildId),
 				{ body: guildCommands }
 			);
-			console.log(`Registered ${guildCommands.length} guild commands in ${process.env.DEV_GUILD_ID}.`);
+			console.log(`Successfully reloaded ${dataGuild.length} guild-specific application (/) commands in guild ${guildId}.`);
 		}
-
-		console.log(`Finished refreshing commands.`);
+		
+		console.log('Finished refreshing commands.');
 	} catch (error) {
 		console.error(error);
 	}
